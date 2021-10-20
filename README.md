@@ -12,3 +12,14 @@ compiling requires nightly.
 Should be decently (but not insanely) optimized. I'm not looking to optimize this much more right
 now unless someone has any suggestions for getting an order of at least an order of magnitude of
 performance out. Probably this will require some changed strategy.
+
+## Results
+
+About one out of 70,000 beginner sized minesweeper boards (9x9 with 10 mines) can be solved in a
+single guess. Surprisingly, the best place to guess is to do this is in a corner of the board.
+A guess in the corner will give you about a one in 180,000 chance of instantly solving the puzzle.
+Guessing diagonal to a corner is the worst option, where you're reduced to about a one in 4,000,000
+chance of solving the board.
+
+I don't have enough compute to have found even a single instantly solvable board in Intermediate or
+Advanced sizes. Would love to hear from anyone who finds one though!
