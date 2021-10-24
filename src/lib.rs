@@ -113,12 +113,10 @@ where
         board[x][y] = Mine;
 
         for i in x - 1..=x + 1 {
-            for j in y - 1..=y + 1 {
-                // SAFETY: (x, y) are in 1..=N, 1..=M, so i, j are in bounds
-                unsafe {
-                    if *board.get_unchecked(i).get_unchecked(j) != Mine {
-                        *board.get_unchecked_mut(i).get_unchecked_mut(j) = Closed;
-                    }
+            let chunk = unsafe { board.get_unchecked_mut(i).get_unchecked_mut(y - 1..=y + 1) };
+            for entry in chunk {
+                if *entry != Mine {
+                    *entry = Closed;
                 }
             }
         }
